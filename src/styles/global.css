@@ -1,1 +1,67 @@
 @import "tailwindcss";
+
+@theme {
+  --color-background: oklch(0.97 0 286);
+  --color-foreground: oklch(0.44 0.01 286);
+
+  --color-card: oklch(0.99 0 0);
+  --color-card-foreground: oklch(0.44 0.01 286);
+
+  --color-popover: oklch(0.99 0 0);
+  --color-popover-foreground: oklch(0.44 0.01 286);
+
+  --color-primary: oklch(0.21 0.01 286);
+  --color-primary-foreground: oklch(0.99 0 0);
+
+  --color-secondary: oklch(0.92 0 286);
+  --color-secondary-foreground: oklch(0.21 0.01 286);
+
+  --color-muted: oklch(0.92 0 286);
+  --color-muted-foreground: oklch(0.21 0.01 286);
+
+  --color-accent: oklch(0.65 0.19 41);
+  --color-accent-foreground: oklch(0.99 0 0);
+
+  --color-destructive: oklch(0.58 0.22 27);
+  --color-destructive-foreground: oklch(0.99 0 0);
+
+  --color-border: oklch(0.87 0.01 286);
+  --color-input: oklch(0.87 0.01 286);
+  --color-ring: oklch(0.87 0.01 286);
+}
+
+body {
+  @apply bg-background text-foreground;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-semibold leading-tight text-primary tracking-tight;
+}
+
+h1 {
+  @apply text-5xl;
+}
+h2 {
+  @apply text-4xl;
+}
+h3 {
+  @apply text-3xl;
+}
+
+a {
+  @apply text-foreground underline;
+}
+
+input {
+  @apply border border-border bg-card p-2 rounded-md;
+}
+
+button {
+  @apply px-2 py-2 border rounded-md bg-primary text-primary-foreground border-primary cursor-pointer hover:bg-primary/80;
+}
+
+button.destructive {
+  @apply bg-destructive text-destructive-foreground border-destructive hover:bg-destructive/80;
+}

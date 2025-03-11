@@ -12,14 +12,18 @@ const linkdump = await db.select().from(Linkdump);
     <input type="url" name="url" placeholder="URL" required />
     <button type="submit">Add</button>
   </form>
-  <ul>
+  <ul class="space-y-8 py-12">
     {
       linkdump.map(({ id, url }) => (
-        <li class="flex gap-2">
-          <a href={url}>{url}</a>
+        <li class="flex gap-4 items-center">
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            {url}
+          </a>
           <form method="POST" action={actions.deleteUrl}>
             <input type="hidden" name="id" value={id} />
-            <button type="submit">Delete</button>
+            <button type="submit" class="destructive">
+              Delete
+            </button>
           </form>
         </li>
       ))
