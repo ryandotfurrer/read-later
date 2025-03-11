@@ -1,11 +1,28 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { db, Linkdump } from "astro:db";
+import { actions } from "astro:actions";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const linkdump = await db.select().from(Linkdump);
 ---
 
 <Layout>
-	<Welcome />
+  <h1>read later</h1>
+  <form method="POST" action={actions.addUrl}>
+    <input type="url" name="url" placeholder="URL" required />
+    <button type="submit">Add</button>
+  </form>
+  <ul>
+    {
+      linkdump.map(({ id, url }) => (
+        <li class="flex gap-2">
+          <a href={url}>{url}</a>
+          <form method="POST" action={actions.deleteUrl}>
+            <input type="hidden" name="id" value={id} />
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      ))
+    }
+  </ul>
 </Layout>

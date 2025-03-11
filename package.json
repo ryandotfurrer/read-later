@@ -3,12 +3,16 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "astro dev --host --remote",
+    "build": "astro build --remote",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.4.3"
+    "@astrojs/db": "^0.14.8",
+    "@astrojs/vercel": "^8.1.2",
+    "@tailwindcss/vite": "^4.0.13",
+    "astro": "^5.4.3",
+    "tailwindcss": "^4.0.13"
   }
 }
